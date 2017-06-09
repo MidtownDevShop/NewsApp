@@ -20,5 +20,17 @@
             <img class="midtownLogo" src="../../assets/images/MidtownLogo.png" center>
         </ion-col>
     </ion-row>
+    <ion-row ng-reapeat="card in cards">
+        <ion-card>
+            <ion-card-header>
+                {{card.title}}
+            </ion-card-header>
+            <ion-card-content>
+                <a href='{{card.url}}'><img [src]='card.urlToImage'></a>
+                <h5>{{card.description}}</h5>
+                <h5>{{card.author}}</h5>
+            </ion-card-content>
+        </ion-card>
+    </ion-row>
 
 </ion-content>
