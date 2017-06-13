@@ -12,6 +12,8 @@ import { PoliticsPage } from '../pages/politics/politics';
 import { WorldPage } from '../pages/world/world';
 import { BusinessPage } from '../pages/business/business';
 
+import { MainService } from './app.service';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,9 +24,13 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private mainService: MainService) {
     this.initializeApp();
 
+    getNews: void {
+    this.news = this.mainService.getNews();
+    }
+    
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -53,4 +59,5 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+  
 }
